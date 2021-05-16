@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/entrada_caverna"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/tx_logo" />
+
+    <TextView
+        android:id="@+id/tv_Jefe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Jefe de Proyecto"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_Aritz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aritz Marina"
+        android:textColor="@color/white"
+        android:textSize="30dp"/>
+
+    <ImageView
+        android:id="@+id/imgAritz"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/aritz" />
+
+    <TextView
+        android:id="@+id/tv_Desarrolladores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desarrolladores"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_Arkaitz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arkaitz Garcia"
+        android:textColor="@color/white"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_Ekaitz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ekaitz Martín"
+        android:textColor="@color/white"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_Edu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eduardo Camañez"
+        android:textColor="@color/white"
+        android:textSize="30dp"/>
+
+    <ImageView
+        android:id="@+id/imgDesarrolladores"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/desarrolladores"
+        android:scaleType="fitCenter"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
