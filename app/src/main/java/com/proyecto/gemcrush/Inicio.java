@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,6 +32,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Inicio extends AppCompatActivity {
+
     TextView tvVidas, tvTiempo;
     Handler handler = new Handler();
     int diferencia_segundos, diferencia_en_minutos, diferencia_en_horas,vidas;
@@ -52,6 +54,8 @@ public class Inicio extends AppCompatActivity {
         tvTiempo = findViewById(R.id.tvTiempo);
         Context context = this;
         btnAgradecimientos.setOnClickListener(v -> Dialog_Agradecimiento.dialog_Agradecimiento(context));
+        Intent intent = new Intent(Inicio.this, MusicaFondo.class);
+        startService(intent);
         gestionarVidas();
         btnIdiomas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +74,7 @@ public class Inicio extends AppCompatActivity {
             }
         });
     }
+
     public void gestionarVidas(){
 
     }

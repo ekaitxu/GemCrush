@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".Inicio"/>
         <activity android:name=".Idioma_Activity"/>
+        <service android:name=".MusicaFondo" />
     </application>
 
 </manifest>
