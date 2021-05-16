@@ -47,6 +47,7 @@ public class Inicio extends AppCompatActivity {
 
         Button btnAgradecimientos = findViewById(R.id.btnAgradecimientos);
         Button btnIdiomas = findViewById(R.id.btnIdiomas);
+        Button btnJuegos = findViewById(R.id.btnJuego);
         tvVidas = findViewById(R.id.tvVida);
         tvTiempo = findViewById(R.id.tvTiempo);
         Context context = this;
@@ -56,6 +57,14 @@ public class Inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Inicio.this, Idioma_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btnJuegos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Inicio.this, JuegoActivity.class);
                 startActivity(intent);
                 finish();
             }
