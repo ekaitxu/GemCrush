@@ -5,6 +5,11 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+/*
+* Esta clase sirve para controlar el la dirección del gesto que se realize con el dedo
+* sobre cualquiera de las "gemas" del juego
+*/
+
 public class OnSwipeListener implements View.OnTouchListener {
 
     public GestureDetector gestureDetector;
