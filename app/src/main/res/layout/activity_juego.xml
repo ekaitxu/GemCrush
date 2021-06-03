@@ -10,6 +10,35 @@
     android:background="@drawable/caverna_cristal"
     tools:context=".JuegoActivity">
 
+    <LinearLayout
+        android:id="@+id/LinearLayoutPuntuacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvDescPuntos"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold">
+
+        </TextView>
+        <TextView
+            android:id="@+id/puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </LinearLayout>
+
+
     <GridLayout
         android:id="@+id/gridTablero"
         android:layout_width="match_parent"

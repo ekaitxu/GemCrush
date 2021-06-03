@@ -4,4 +4,5 @@
     <string name="euskera">Euskera</string>
     <string name="menu">Menu</string>
     <string name="sonido_activado">Sonido activado</string>
+    <string name="tvDescPuntos">Puntos: </string>
 </resources>
