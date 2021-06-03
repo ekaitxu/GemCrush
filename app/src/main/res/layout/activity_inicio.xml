@@ -4,45 +4,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/caverna_cristal">
 
 
     <Button
         android:id="@+id/btnAgradecimientos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="185dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="153dp"
+        android:layout_width="209dp"
+        android:layout_height="53dp"
+
+        android:layout_marginBottom="216dp"
+        android:backgroundTint="#FF9800"
         android:text="Agradecimientos"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnIdiomas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="53dp"
         android:layout_marginStart="185dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="408dp"
-        android:text="Idiomas"
+        android:layout_marginBottom="304dp"
+        android:backgroundTint="#FF9800"
+        android:text="AJUSTES"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="53dp"
         android:layout_marginStart="185dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="308dp"
+        android:layout_marginBottom="392dp"
+        android:backgroundTint="#FF9800"
         android:text="Juego"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -66,7 +73,7 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039" />
