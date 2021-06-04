@@ -21,7 +21,6 @@ public class MusicaFondo extends Service {
     }
     public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer.start();
-        Toast.makeText(getApplicationContext(), "Musica Activada",    Toast.LENGTH_SHORT).show();
         return startId;
     }
     public void onStart(Intent intent, int startId) {

@@ -1,52 +1,46 @@
 package com.proyecto.gemcrush;
 
-import android.app.Activity;
-import android.app.Dialog;
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.MediaPlayer;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Inicio extends AppCompatActivity {
-
+    public int vidas;
+    public boolean isRinging;
     TextView tvVidas, tvTiempo;
-    Handler handler = new Handler();
-    int diferencia_segundos, diferencia_en_minutos, diferencia_en_horas,vidas;
-    boolean vidaPerdida, primeraVez;
-    Runnable runnable;
-    Date fechaPerdidaVida = null;
-    Date fechaActual;
-    String vidaPerdidaHora;
+    int diferencia_segundos, diferencia_en_minutos, diferencia_en_horas;
+    Date lostTime, currentTime;
+    SharedPreferences prefs;
+    long lostMillis, currentMillis;
+    final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
+        prefs =  this.getSharedPreferences("GEMCRUSH", Context.MODE_PRIVATE);
         Button btnAgradecimientos = findViewById(R.id.btnAgradecimientos);
         Button btnIdiomas = findViewById(R.id.btnIdiomas);
         Button btnJuegos = findViewById(R.id.btnJuego);
@@ -54,9 +48,21 @@ public class Inicio extends AppCompatActivity {
         tvTiempo = findViewById(R.id.tvTiempo);
         Context context = this;
         btnAgradecimientos.setOnClickListener(v -> Dialog_Agradecimiento.dialog_Agradecimiento(context));
-        Intent intent = new Intent(Inicio.this, MusicaFondo.class);
-        startService(intent);
-        gestionarVidas();
+        isRinging=!prefs.getBoolean("mute?", false);
+        if (isRinging) {
+            Intent intent = new Intent(Inicio.this, MusicaFondo.class);
+            startService(intent);
+        }
+        vidas = prefs.getInt("vidas", 0);
+        vidas = Integer.parseInt(tvVidas.getText().toString());
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                //TODO your background code
+                gestionarVidas();
+            }
+        });
+
         btnIdiomas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +82,48 @@ public class Inicio extends AppCompatActivity {
     }
 
     public void gestionarVidas(){
-
+        while(vidas<3){
+            lostMillis = prefs.getLong("losttime",-1);
+            if (lostMillis==-1) {
+                Calendar cal = Calendar.getInstance(); // creates calendar
+                cal.setTime(new Date());               // sets calendar time/date
+                cal.add(Calendar.HOUR_OF_DAY, 2);      // adds one hour
+                lostTime = cal.getTime();
+                lostMillis = lostTime.getTime();
+                prefs.edit().putLong("losttime", lostMillis).apply();
+            }
+            currentTime = Calendar.getInstance().getTime();
+            currentMillis = currentTime.getTime();
+            long diferencia = lostMillis - currentMillis;
+            Date diferenciaDate = new Date();
+            diferenciaDate.setTime(diferencia);
+            DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss", Locale.getDefault());
+            String strDate = dateFormat.format(diferenciaDate);
+            if (diferencia<0){
+                vidas=vidas+1;
+                tvVidas.setText(Integer.toString(vidas));
+                Calendar cal = Calendar.getInstance(); // creates calendar
+                cal.setTime(new Date());               // sets calendar time/date
+                cal.add(Calendar.HOUR_OF_DAY, 2);      // adds one hour
+                lostTime = cal.getTime();
+                lostMillis = lostTime.getTime();
+                prefs.edit().putLong("losttime", lostMillis).apply();
+            }
+            runOnUiThread(new Runnable(){
+                @Override
+                public void run(){
+                    // change UI elements here
+                    tvTiempo.setText(strDate);
+                }
+            });
+        }
     }
 
+    @Override
+    protected void onDestroy() {
+        stopService(new Intent(this, MusicaFondo.class));
+        prefs.edit().putInt("vidas",vidas).apply();
+        super.onDestroy();
+    }
 
 }
