@@ -3,6 +3,7 @@
     <string name="castellano">Castellano</string>
     <string name="euskera">Euskera</string>
     <string name="menu">Menu</string>
+    <string name="tvDescPuntos">Puntos: </string>
     <string name="activar_audio">Activar audio</string>
     <string name="desactivar_audio">Desactivar audio</string>
 </resources>
