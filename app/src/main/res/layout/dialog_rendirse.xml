@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/entrada_caverna"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    >
+    <TextView
+        android:id="@+id/tv_Aviso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recuerda_que_si_te_rindes_perderas_una_vida"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/tv_Pregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deseas_rendirte"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center|top"
+        android:layout_marginTop="30sp"
+        >
+
+        <Button
+            android:id="@+id/btn_Si"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/si" />
+
+        <Button
+            android:id="@+id/btn_No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no"
+            android:layout_marginStart="50sp"/>
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,9 +8,10 @@
     android:id="@+id/mainLayout"
     android:layout_gravity="center"
     android:background="@drawable/caverna_cristal"
-    tools:context=".JuegoActivity">
+    tools:context=".JuegoActivity"
+    >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/LinearLayoutPuntuacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,32 +19,73 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tvDescPuntos"
-            android:textColor="@color/black"
+            android:textColor="@color/blanco_roto"
             android:textSize="28sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnAudio"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
         </TextView>
+
         <TextView
             android:id="@+id/puntos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:text=""
-            android:textColor="@color/black"
+            android:textColor="@color/blanco_roto"
             android:textSize="28sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
         </TextView>
-    </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/btnAudio"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:contentDescription="@string/desactivar_audio"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_volume_off_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
         android:id="@+id/gridTablero"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp">
     </GridLayout>
+
+    <Button
+        android:id="@+id/btnRendirse"
+        android:layout_width="209dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#FF9800"
+        android:text="Rendirse"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>

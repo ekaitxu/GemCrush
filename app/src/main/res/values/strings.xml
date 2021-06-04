@@ -6,4 +6,8 @@
     <string name="tvDescPuntos">Puntos: </string>
     <string name="activar_audio">Activar audio</string>
     <string name="desactivar_audio">Desactivar audio</string>
+    <string name="deseas_rendirte">¿Deseas rendirte?</string>
+    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Recuerda que si te rindes perderas una vida</string>
+    <string name="no">No</string>
+    <string name="si">Si</string>
 </resources>

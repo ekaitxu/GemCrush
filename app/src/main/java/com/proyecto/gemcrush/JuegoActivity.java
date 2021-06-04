@@ -1,12 +1,19 @@
 package com.proyecto.gemcrush;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class JuegoActivity extends AppCompatActivity {
+public class JuegoActivity extends AppCompatActivity implements View.OnClickListener{
     //region Variables
     int[] gemas = {
             R.drawable.diamante,
@@ -32,13 +39,32 @@ public class JuegoActivity extends AppCompatActivity {
     TextView puntos;
     int puntuacion = 0;
     //endregion
+    Button btnRendirse;
+    ImageButton btnAudio;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
-    @SuppressLint("ClickableViewAccessibility")
+
+    @SuppressLint({"ClickableViewAccessibility", "NonConstantResourceId", "CommitPrefEdits"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
 
+        prefs =  this.getSharedPreferences("GEMCRUSH", Context.MODE_PRIVATE);
+        editor= prefs.edit();
+        btnAudio = findViewById(R.id.btnAudio);
+        btnRendirse = findViewById(R.id.btnRendirse);
+        btnAudio.setOnClickListener(this);
+        btnRendirse.setOnClickListener(this);
+        if (prefs.getBoolean("mute?",false)) {
+            startService(new Intent(JuegoActivity.this, MusicaFondo.class));
+            btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_up_24));
+            btnAudio.setTag("R.drawable.ic_baseline_volume_up_24");
+        }else{
+            btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_off_24));
+            btnAudio.setTag("R.drawable.ic_baseline_volume_off_24");
+        }
         //region Asignar variables
         puntos = findViewById(R.id.puntos);
         //Se recogen las medidas de la pantalla y se calcula la anchura de cada bloque (gema)
@@ -251,4 +277,34 @@ public class JuegoActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnRendirse:
+                // do your code
+                Dialog_Rendirse dialog = new Dialog_Rendirse(this);
+                dialog.show();
+                break;
+            case R.id.btnAudio:
+                if (btnAudio.getTag().equals("R.drawable.ic_baseline_volume_off_24")) {
+                    startService(new Intent(JuegoActivity.this, MusicaFondo.class));
+                    btnAudio.setImageDrawable( ContextCompat.getDrawable(JuegoActivity.this, R.drawable.ic_baseline_volume_up_24));
+                    btnAudio.setTag("R.drawable.ic_baseline_volume_up_24");
+                    editor.putBoolean("mute?",false);
+                }else{
+                    stopService(new Intent(JuegoActivity.this, MusicaFondo.class));
+                    btnAudio.setImageDrawable( ContextCompat.getDrawable(JuegoActivity.this, R.drawable.ic_baseline_volume_off_24));
+                    btnAudio.setTag("R.drawable.ic_baseline_volume_off_24");
+                    editor.putBoolean("mute?",true);
+                }
+                editor.apply();
+                break;
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(JuegoActivity.this, MusicaFondo.class));
+    }
 }

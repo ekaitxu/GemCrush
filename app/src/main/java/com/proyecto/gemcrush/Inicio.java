@@ -48,11 +48,6 @@ public class Inicio extends AppCompatActivity {
         tvTiempo = findViewById(R.id.tvTiempo);
         Context context = this;
         btnAgradecimientos.setOnClickListener(v -> Dialog_Agradecimiento.dialog_Agradecimiento(context));
-        isRinging=!prefs.getBoolean("mute?", false);
-        if (isRinging) {
-            Intent intent = new Intent(Inicio.this, MusicaFondo.class);
-            startService(intent);
-        }
         vidas = prefs.getInt("vidas", 0);
         vidas = Integer.parseInt(tvVidas.getText().toString());
         AsyncTask.execute(new Runnable() {
@@ -101,6 +96,7 @@ public class Inicio extends AppCompatActivity {
             String strDate = dateFormat.format(diferenciaDate);
             if (diferencia<0){
                 vidas=vidas+1;
+                prefs.edit().putInt("vidas",vidas+1).apply();
                 tvVidas.setText(Integer.toString(vidas));
                 Calendar cal = Calendar.getInstance(); // creates calendar
                 cal.setTime(new Date());               // sets calendar time/date
@@ -108,6 +104,7 @@ public class Inicio extends AppCompatActivity {
                 lostTime = cal.getTime();
                 lostMillis = lostTime.getTime();
                 prefs.edit().putLong("losttime", lostMillis).apply();
+
             }
             runOnUiThread(new Runnable(){
                 @Override
@@ -121,7 +118,6 @@ public class Inicio extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        stopService(new Intent(this, MusicaFondo.class));
         prefs.edit().putInt("vidas",vidas).apply();
         super.onDestroy();
     }
