@@ -16,7 +16,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="@string/contador"
+            android:textColor="@color/blanco_roto"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView"
@@ -68,12 +82,22 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <view
+        android:id="@+id/gifGameOver"
+        class="pl.droidsonroids.gif.GifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/game_over"
+        android:visibility="gone"
+        tools:visibility="gone" />
+
     <GridLayout
         android:id="@+id/gridTablero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="100dp">
+
     </GridLayout>
 
     <Button
@@ -82,10 +106,11 @@
         android:layout_height="53dp"
         android:layout_gravity="center"
         android:backgroundTint="#FF9800"
-        android:text="Rendirse"
+        android:text="@string/rendirse"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toStartOf="parent" />
+
 </LinearLayout>

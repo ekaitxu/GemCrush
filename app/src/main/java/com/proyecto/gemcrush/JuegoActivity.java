@@ -7,10 +7,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -21,7 +24,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class JuegoActivity extends AppCompatActivity implements View.OnClickListener{
+import pl.droidsonroids.gif.GifImageView;
+
+public class JuegoActivity extends AppCompatActivity implements View.OnClickListener {
     //region Variables
     int[] gemas = {
             R.drawable.diamante,
@@ -33,6 +38,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
     int anchuraDelBloque, numDeBloques = 8, anchuraDeLaPantalla;
     ArrayList<ImageView> gema = new ArrayList<>();
     int gemaAMover, gemaAReemplazar;
+    long temporizador;
     int noGema = R.drawable.transparente;
     Handler mHandler;
     int intervalo = 100;
@@ -40,6 +46,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
     int puntuacion = 0;
     //endregion
     Button btnRendirse;
+    TextView contador;
     ImageButton btnAudio;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -67,6 +74,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         }
         //region Asignar variables
         puntos = findViewById(R.id.puntos);
+        contador = findViewById(R.id.tvContador);
+        temporizador = Integer.parseInt(contador.getText().toString())*1000;
         //Se recogen las medidas de la pantalla y se calcula la anchura de cada bloque (gema)
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -76,6 +85,25 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         //endregion
 
         crearTablero();
+
+
+
+                new CountDownTimer(temporizador, 1000) {
+                    @SuppressLint("SetTextI18n")
+                    public void onTick(long millisUntilFinished) {
+                        int restante= ((int)millisUntilFinished)/1000;
+                        contador.setText(Integer.toString(restante));
+                    }
+
+                    public void onFinish() {
+                        GifImageView game_over = findViewById(R.id.gifGameOver);
+                        GridLayout tablero = findViewById(R.id.gridTablero);
+                        game_over.setVisibility(View.VISIBLE);
+                        tablero.setVisibility(View.GONE);
+                        contador.setVisibility(View.INVISIBLE);
+                        btnRendirse.setText(getResources().getString(R.string.salir));
+                    }
+                }.start();
 
         //region Mover Gema
         /*Listener para controlar las acciones cuando una "gema" se mueva en x dirección, esto
@@ -283,9 +311,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btnRendirse:
                 // do your code
-                Dialog_Rendirse dialog = new Dialog_Rendirse(this);
-                dialog.show();
+                if (btnRendirse.getText().toString().equals(getString(R.string.rendirse))) {
+                    Dialog_Rendirse dialog = new Dialog_Rendirse(this);
+                    dialog.show();
+                }else{
+                    Intent intent = new Intent(JuegoActivity.this, Inicio.class);
+                    startActivity(intent);
+                    finish();
+                }
                 break;
+
             case R.id.btnAudio:
                 if (btnAudio.getTag().equals("R.drawable.ic_baseline_volume_off_24")) {
                     startService(new Intent(JuegoActivity.this, MusicaFondo.class));
@@ -307,4 +342,5 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         super.onDestroy();
         stopService(new Intent(JuegoActivity.this, MusicaFondo.class));
     }
+
 }
