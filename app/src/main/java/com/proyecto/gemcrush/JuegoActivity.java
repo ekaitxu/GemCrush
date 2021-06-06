@@ -38,19 +38,20 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
     int intervalo = 100;
     TextView puntos;
     int puntuacion = 0;
-    //endregion
     Button btnRendirse;
     ImageButton btnAudio;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-
+    private boolean primeraVez = true;
+    //endregion
 
     @SuppressLint({"ClickableViewAccessibility", "NonConstantResourceId", "CommitPrefEdits"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
-
+        
+        //region Asignar variables
         prefs =  this.getSharedPreferences("GEMCRUSH", Context.MODE_PRIVATE);
         editor= prefs.edit();
         btnAudio = findViewById(R.id.btnAudio);
@@ -61,11 +62,11 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
             startService(new Intent(JuegoActivity.this, MusicaFondo.class));
             btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_up_24));
             btnAudio.setTag("R.drawable.ic_baseline_volume_up_24");
-        }else{
+        } else {
             btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_off_24));
             btnAudio.setTag("R.drawable.ic_baseline_volume_off_24");
         }
-        //region Asignar variables
+        
         puntos = findViewById(R.id.puntos);
         //Se recogen las medidas de la pantalla y se calcula la anchura de cada bloque (gema)
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -86,6 +87,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeLeft() {
                     super.onSwipeLeft();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover - 1;
 
@@ -96,6 +98,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeRight() {
                     super.onSwipeRight();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover + 1;
 
@@ -106,6 +109,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeTop() {
                     super.onSwipeTop();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover - numDeBloques;
 
@@ -116,6 +120,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeBottom() {
                     super.onSwipeBottom();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover + numDeBloques;
 
@@ -148,8 +153,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                         (int) gema.get(x++).getTag() == gemaElegida &&
                         (int) gema.get(x).getTag() == gemaElegida)
                 {
-                    puntuacion = puntuacion + 3;
-                    puntos.setText(String.valueOf(puntuacion));
+                    //Para evitar sumar puntos si se generan tres iguales desde el principio
+                    if (!primeraVez) {
+                        puntuacion = puntuacion + 3;
+                        puntos.setText(String.valueOf(puntuacion));
+                    }
+
                     //3 veces porque son 3 gemas por línea las que queremos
                     gema.get(x).setImageResource(noGema);
                     gema.get(x).setTag(noGema);
@@ -176,8 +185,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                     (int) gema.get(x + numDeBloques).getTag() == gemaElegida &&
                     (int) gema.get(x + 2 * numDeBloques).getTag() == gemaElegida)
             {
-                puntuacion = puntuacion + 3;
-                puntos.setText(String.valueOf(puntuacion));
+                //Para evitar sumar puntos si se generan tres iguales desde el principio
+                if (!primeraVez) {
+                    puntuacion = puntuacion + 3;
+                    puntos.setText(String.valueOf(puntuacion));
+                }
+
                 //3 veces porque son 3 gemas por columna las que queremos
                 gema.get(x).setImageResource(noGema);
                 gema.get(x).setTag(noGema);
@@ -276,8 +289,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
-
-
+    
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
