@@ -1,25 +1,14 @@
 package com.proyecto.gemcrush;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
@@ -30,13 +19,10 @@ import java.util.Locale;
 
 public class Inicio extends AppCompatActivity {
     public int vidas;
-    public boolean isRinging;
     TextView tvVidas, tvTiempo;
-    int diferencia_segundos, diferencia_en_minutos, diferencia_en_horas;
     Date lostTime, currentTime;
     SharedPreferences prefs;
     long lostMillis, currentMillis;
-    final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +41,6 @@ public class Inicio extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                //TODO your background code
                 gestionarVidas();
             }
         });
@@ -69,13 +54,13 @@ public class Inicio extends AppCompatActivity {
         btnJuegos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, JuegoActivity.class);
-                startActivity(intent);
-                finish();
+                Dialog_Dificultad dialog = new Dialog_Dificultad(Inicio.this, Inicio.this);
+                dialog.show();
             }
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public void gestionarVidas(){
         while(vidas<3){
             lostMillis = prefs.getLong("losttime",-1);

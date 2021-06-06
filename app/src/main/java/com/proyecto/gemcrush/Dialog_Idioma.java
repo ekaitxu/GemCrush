@@ -19,8 +19,6 @@ public class Dialog_Idioma extends Dialog{
     public Dialog_Idioma(Activity activity, Context context) {
         super(activity);
         mActivity = activity;
-        SharedPreferences prefs;
-        prefs =  activity.getSharedPreferences("GEMCRUSH", Context.MODE_PRIVATE);
         setContentView(R.layout.dialog_idioma);
         Button btnCastellano =findViewById(R.id.btn_Castellano);
         Button btnEuskera = findViewById(R.id.btn_Euskera);
@@ -37,7 +35,7 @@ public class Dialog_Idioma extends Dialog{
                 dismiss();
                 mActivity.finish();
                 mActivity.startActivity(intent);
-                prefs.edit().putString("idioma","es").apply();
+
             }
         });
         btnEuskera.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +51,7 @@ public class Dialog_Idioma extends Dialog{
                 dismiss();
                 mActivity.finish();
                 mActivity.startActivity(intent);
-                prefs.edit().putString("idioma","eu").apply();
+
             }
         });
     }

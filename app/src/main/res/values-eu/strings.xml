@@ -24,4 +24,9 @@
     <string name="contador">60</string>
     <string name="salir">Irten</string>
     <string name="rendirse">Errenditu</string>
+    <string name="dificil">Zaila</string>
+    <string name="normal">Normala</string>
+    <string name="facil">Erraza</string>
+    <string name="seleccion_una_dificultad">Zailtasuna aukeratu</string>
+    <string name="de">/</string>
 </resources>

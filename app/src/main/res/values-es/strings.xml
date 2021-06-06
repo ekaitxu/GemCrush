@@ -24,4 +24,9 @@
     <string name="contador">60</string>
     <string name="salir">Salir</string>
     <string name="rendirse">Rendirse</string>
+    <string name="dificil">Dificil</string>
+    <string name="normal">Normal</string>
+    <string name="facil">Facil</string>
+    <string name="seleccion_una_dificultad">Seleccioné una dificultad</string>
+    <string name="de">/</string>
 </resources>

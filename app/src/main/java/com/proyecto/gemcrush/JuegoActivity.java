@@ -44,15 +44,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
     int intervalo = 100;
     TextView puntos;
     int puntuacion = 0;
+    int puntos_minimos;
     //endregion
     Button btnRendirse;
-    TextView contador;
+    TextView contador, tvPuntosMinimo;
     ImageButton btnAudio;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
 
-    @SuppressLint({"ClickableViewAccessibility", "NonConstantResourceId", "CommitPrefEdits"})
+    @SuppressLint({"ClickableViewAccessibility", "NonConstantResourceId", "CommitPrefEdits", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         editor= prefs.edit();
         btnAudio = findViewById(R.id.btnAudio);
         btnRendirse = findViewById(R.id.btnRendirse);
+        tvPuntosMinimo = findViewById(R.id.tv_PuntosMinimo);
         btnAudio.setOnClickListener(this);
         btnRendirse.setOnClickListener(this);
         if (prefs.getBoolean("mute?",false)) {
@@ -71,6 +73,13 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         }else{
             btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_off_24));
             btnAudio.setTag("R.drawable.ic_baseline_volume_off_24");
+        }
+        Intent intent= getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle!=null)
+        {
+            puntos_minimos= bundle.getInt("puntos");
+            tvPuntosMinimo.setText(Integer.toString(puntos_minimos));
         }
         //region Asignar variables
         puntos = findViewById(R.id.puntos);
@@ -102,6 +111,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                         tablero.setVisibility(View.GONE);
                         contador.setVisibility(View.INVISIBLE);
                         btnRendirse.setText(getResources().getString(R.string.salir));
+                        if (puntuacion>=puntos_minimos) {
+                            game_over.setImageResource(R.drawable.victory);
+                        }
                     }
                 }.start();
 

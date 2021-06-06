@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/entrada_caverna"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    >
+    <TextView
+        android:id="@+id/tv_Dificultad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccion_una_dificultad"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textAlignment="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center|top"
+        android:layout_marginTop="30sp"
+        >
+
+        <Button
+            android:id="@+id/btn_Facil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/facil"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btn_Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50sp"
+            android:text="@string/normal"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btn_Dificil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50sp"
+            android:text="@string/dificil"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
