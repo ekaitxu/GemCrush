@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gem Crush</string>
+    <string name="castellano">Gazteleras</string>
+    <string name="euskera">Euskaraz</string>
+    <string name="menu">Menu</string>
+    <string name="tvDescPuntos">Puntuak: </string>
+    <string name="activar_audio">Audioa aktibatu</string>
+    <string name="desactivar_audio">Audioa desaktibatu</string>
+    <string name="deseas_rendirte">¿Errenditu nahi duzu?</string>
+    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Gogoratu errenditzen baduzu bizitza bat galduko duzu</string>
+    <string name="no">Ez</string>
+    <string name="si">Bai</string>
+    <string name="idiomas">Hizkuntzak</string>
+    <string name="jugar">Jolastu</string>
+    <string name="agradecimientos">Eskerrak</string>
+    <string name="seleccion_un_idioma">Hizkuntza bat aukeratu</string>
+    <string name="jefe_de_proyecto">Proiektuaren Buruzagia</string>
+    <string name="aritz_marina">Aritz Marina</string>
+    <string name="desarrolladores">Garatzaileak</string>
+    <string name="arkaitz_garcia">Arkaitz Garcia</string>
+    <string name="ekaitz_mart_n">Ekaitz Martín</string>
+    <string name="eduardo_cama_ez">Eduardo Camañez</string>
+</resources>

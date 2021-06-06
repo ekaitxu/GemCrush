@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -57,13 +59,11 @@ public class Inicio extends AppCompatActivity {
                 gestionarVidas();
             }
         });
-
         btnIdiomas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Idioma_Activity.class);
-                startActivity(intent);
-                finish();
+                Dialog_Idioma dialog = new Dialog_Idioma(Inicio.this, getBaseContext());
+                dialog.show();
             }
         });
         btnJuegos.setOnClickListener(new View.OnClickListener() {

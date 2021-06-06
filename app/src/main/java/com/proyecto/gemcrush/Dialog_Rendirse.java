@@ -44,16 +44,5 @@ public class Dialog_Rendirse extends Dialog{
         });
     }
 
-    /*public static void dialog_Rendirse(Context contexto){
-        final Dialog dialogo = new Dialog(contexto);
-        dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogo.setCancelable(true);
-        dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogo.setContentView(R.layout.dialog_rendirse);
-        dialogo.show();
-
-
-
-    }*/
 
 }

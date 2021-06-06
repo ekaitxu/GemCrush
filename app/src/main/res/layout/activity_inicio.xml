@@ -12,45 +12,46 @@
         android:id="@+id/btnAgradecimientos"
         android:layout_width="209dp"
         android:layout_height="53dp"
-
-        android:layout_marginBottom="216dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="14dp"
         android:backgroundTint="#FF9800"
-        android:text="Agradecimientos"
+        android:text="@string/agradecimientos"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnIdiomas"
-        android:layout_width="209dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="185dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="304dp"
-        android:backgroundTint="#FF9800"
-        android:text="AJUSTES"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.747"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIdiomas"
+        app:layout_constraintVertical_bias="0.048" />
 
     <Button
         android:id="@+id/btnJuego"
         android:layout_width="209dp"
         android:layout_height="53dp"
         android:layout_marginStart="185dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="392dp"
         android:backgroundTint="#FF9800"
-        android:text="Juego"
+        android:text="@string/jugar"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.747"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btnIdiomas"
+        android:layout_width="209dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="133dp"
+        android:backgroundTint="#FF9800"
+        android:text="@string/idiomas"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnJuego" />
 
     <ImageView
         android:id="@+id/imgVida"
@@ -69,7 +70,7 @@
         android:layout_width="27dp"
         android:layout_height="50dp"
         android:text="0"
-        android:textColor="@color/white"
+        android:textColor="@color/blanco_roto"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,13 +81,22 @@
 
     <TextView
         android:id="@+id/tvTiempo"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        android:textColor="@color/black"
+        android:layout_width="122dp"
+        android:layout_height="33dp"
+        android:textColor="@color/blanco_roto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.11" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="328dp"
+        android:layout_height="354dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titulo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
