@@ -80,12 +80,8 @@
         android:id="@+id/btnRendirse"
         android:layout_width="209dp"
         android:layout_height="53dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center|bottom"
         android:backgroundTint="#FF9800"
-        android:text="Rendirse"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.747"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/rendirse"
+        app:cornerRadius="20dp" />
 </LinearLayout>

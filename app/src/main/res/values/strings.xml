@@ -2,12 +2,31 @@
     <string name="app_name">Gem Crush</string>
     <string name="castellano">Castellano</string>
     <string name="euskera">Euskera</string>
-    <string name="menu">Menu</string>
+    <string name="menu">Menú</string>
     <string name="tvDescPuntos">Puntos: </string>
     <string name="activar_audio">Activar audio</string>
     <string name="desactivar_audio">Desactivar audio</string>
     <string name="deseas_rendirte">¿Deseas rendirte?</string>
-    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Recuerda que si te rindes perderas una vida</string>
+    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Recuerda que si te rindes, perderás una vida</string>
     <string name="no">No</string>
-    <string name="si">Si</string>
+    <string name="si">Sí</string>
+
+    <!--region Inicio-->
+    <string name="agradecimientos">Agradecimientos</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="Juego">Juego</string>
+    <!--endregion-->
+
+    <!--region Juego-->
+    <string name="rendirse">Rendirse</string>
+    <!--endregion-->
+
+    <!--region Agradecimientos-->
+    <string name="jefeProyecto">Jefe de proyecto</string>
+    <string name="aritz">Aritz</string>
+    <string name="desarrolladores">Desarrolladores</string>
+    <string name="arkaitz">Arkaitz García</string>
+    <string name="ekaitz">Ekaitz Martín</string>
+    <string name="edu">Eduardo Camáñez</string>
+    <!--endregion-->
 </resources>

@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Jefe de Proyecto"
+        android:text="@string/jefeProyecto"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:background="@color/black"
@@ -34,7 +34,7 @@
         android:id="@+id/tv_Aritz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aritz Marina"
+        android:text="@string/aritz"
         android:textColor="@color/white"
         android:textSize="30dp"/>
 
@@ -49,7 +49,7 @@
         android:id="@+id/tv_Desarrolladores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Desarrolladores"
+        android:text="@string/desarrolladores"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:background="@color/black"
@@ -61,7 +61,7 @@
         android:id="@+id/tv_Arkaitz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Arkaitz Garcia"
+        android:text="@string/arkaitz"
         android:textColor="@color/white"
         android:textSize="30dp"/>
 
@@ -69,7 +69,7 @@
         android:id="@+id/tv_Ekaitz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ekaitz Martín"
+        android:text="@string/ekaitz"
         android:textColor="@color/white"
         android:textSize="30dp"/>
 
@@ -77,7 +77,7 @@
         android:id="@+id/tv_Edu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eduardo Camañez"
+        android:text="@string/edu"
         android:textColor="@color/white"
         android:textSize="30dp"/>
 
