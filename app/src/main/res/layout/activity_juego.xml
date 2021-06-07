@@ -122,7 +122,7 @@
         android:id="@+id/btnRendirse"
         android:layout_width="209dp"
         android:layout_height="53dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center|bottom"
         android:backgroundTint="#FF9800"
         android:text="@string/rendirse"
         app:cornerRadius="20dp"

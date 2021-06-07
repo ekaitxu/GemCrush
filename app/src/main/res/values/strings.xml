@@ -1,34 +1,50 @@
 <resources>
     <string name="app_name">Gem Crush</string>
+
+
+    <!--region Inicio-->
+    <string name="idiomas">Idiomas</string>
+    <string name="jugar">Jugar</string>
+    <string name="agradecimientos">Agradecimientos</string>
+    <string name="vidas">Vidas</string>
+    <string name="vidas_actuales">0</string>
+    <string name="titulo">titulo</string>
+    <!--endregion-->
+
+    <!--region Idioma-->
+    <string name="seleccion_un_idioma">Seleccioné un idioma</string>
     <string name="castellano">Castellano</string>
     <string name="euskera">Euskera</string>
-    <string name="menu">Menu</string>
+    <!--endregion-->
+
+    <!--region Juego-->
+    <string name="contador">60</string>
+    <string name="salir">Salir</string>
+    <string name="rendirse">Rendirse</string>
+    <string name="de">/</string>
     <string name="tvDescPuntos">Puntos: </string>
     <string name="activar_audio">Activar audio</string>
     <string name="desactivar_audio">Desactivar audio</string>
     <string name="deseas_rendirte">¿Deseas rendirte?</string>
-    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Recuerda que si te rindes perderas una vida</string>
+    <string name="recuerda_que_si_te_rindes_perderas_una_vida">Recuerda que si te rindes, perderás una vida</string>
     <string name="no">No</string>
     <string name="si">Si</string>
-    <string name="idiomas">Idiomas</string>
-    <string name="jugar">Jugar</string>
-    <string name="agradecimientos">Agradecimientos</string>
-    <string name="seleccion_un_idioma">Seleccioné un idioma</string>
+    <!--endregion-->
+
+    <!--region Dificultad-->
+    <string name="dificil">Dificil</string>
+    <string name="normal">Normal</string>
+    <string name="facil">Facil</string>
+    <string name="seleccion_una_dificultad">Seleccioné una dificultad</string>
+    <!--endregion-->
+
+    <!--region Agradecimientos-->
     <string name="jefe_de_proyecto">Jefe de Proyecto</string>
     <string name="aritz_marina">Aritz Marina</string>
     <string name="desarrolladores">Desarrolladores</string>
     <string name="arkaitz_garcia">Arkaitz Garcia</string>
     <string name="ekaitz_mart_n">Ekaitz Martín</string>
     <string name="eduardo_cama_ez">Eduardo Camañez</string>
-    <string name="contador">60</string>
-    <string name="salir">Salir</string>
-    <string name="rendirse">Rendirse</string>
-    <string name="dificil">Dificil</string>
-    <string name="normal">Normal</string>
-    <string name="facil">Facil</string>
-    <string name="seleccion_una_dificultad">Seleccioné una dificultad</string>
-    <string name="de">/</string>
-    <string name="vidas">Vidas</string>
-    <string name="vidas_actuales">0</string>
-    <string name="titulo">titulo</string>
+    <!--endregion-->
+
 </resources>
