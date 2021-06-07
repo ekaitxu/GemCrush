@@ -45,6 +45,7 @@
     <string name="arkaitz_garcia">Arkaitz Garcia</string>
     <string name="ekaitz_mart_n">Ekaitz Martín</string>
     <string name="eduardo_cama_ez">Eduardo Camañez</string>
+    <string name="puntos">0</string>
     <!--endregion-->
 
 </resources>

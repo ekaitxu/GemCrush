@@ -101,7 +101,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                     @SuppressLint("SetTextI18n")
                     public void onTick(long millisUntilFinished) {
                         int restante= ((int)millisUntilFinished)/1000;
-                        contador.setText(Integer.toString(restante));
+                        if (restante<10){
+                            contador.setText("0"+restante);
+                        }else{
+                            contador.setText(Integer.toString(restante));
+                        }
+
                     }
 
                     public void onFinish() {
