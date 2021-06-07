@@ -49,9 +49,9 @@
                 android:text="@string/tvDescPuntos"
                 android:textColor="@color/blanco_roto"
                 android:textSize="28sp"
-                android:textStyle="bold">
+                android:textStyle="bold"/>
 
-            </TextView>
+
 
             <TextView
                 android:id="@+id/puntos"
@@ -62,9 +62,7 @@
                 android:textColor="@color/blanco_roto"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                >
-
-            </TextView>
+                />
 
             <TextView
                 android:id="@+id/tv_De"
@@ -117,9 +115,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="100dp"/>
 
-    </GridLayout>
 
     <Button
         android:id="@+id/btnRendirse"
@@ -129,6 +126,7 @@
         android:backgroundTint="#FF9800"
         android:text="@string/rendirse"
         app:cornerRadius="20dp"
+        style="@style/Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.747"

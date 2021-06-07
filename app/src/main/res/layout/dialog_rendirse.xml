@@ -38,12 +38,14 @@
             android:id="@+id/btn_Si"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Button"
             android:text="@string/si" />
 
         <Button
             android:id="@+id/btn_No"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Button"
             android:text="@string/no"
             android:layout_marginStart="50sp"/>
     </LinearLayout>
