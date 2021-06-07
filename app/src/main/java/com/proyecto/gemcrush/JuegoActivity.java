@@ -323,10 +323,13 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
             imageView.setLayoutParams(new android.view.ViewGroup.LayoutParams(anchuraDelBloque, anchuraDelBloque));
             imageView.setMaxWidth(anchuraDelBloque);
             imageView.setMaxHeight(anchuraDelBloque);
+            imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.shape));
 
             int gemaAleatoria = (int) Math.floor(Math.random() * gemas.length);
             imageView.setImageResource(gemas[gemaAleatoria]);
             imageView.setTag(gemas[gemaAleatoria]);
+            imageView.setAdjustViewBounds(true);
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             gema.add(imageView);
             gridLayout.addView(imageView);
 
