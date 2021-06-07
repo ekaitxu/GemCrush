@@ -1,24 +1,22 @@
 package com.proyecto.gemcrush;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +49,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
     ImageButton btnAudio;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-
+    private boolean primeraVez = true;
+    //endregion
 
     @SuppressLint({"ClickableViewAccessibility", "NonConstantResourceId", "CommitPrefEdits", "SetTextI18n"})
     @Override
@@ -59,6 +58,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
 
+        //region Asignar variables
         prefs =  this.getSharedPreferences("GEMCRUSH", Context.MODE_PRIVATE);
         editor= prefs.edit();
         btnAudio = findViewById(R.id.btnAudio);
@@ -70,7 +70,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
             startService(new Intent(JuegoActivity.this, MusicaFondo.class));
             btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_up_24));
             btnAudio.setTag("R.drawable.ic_baseline_volume_up_24");
-        }else{
+        } else {
             btnAudio.setImageDrawable( ContextCompat.getDrawable(this, R.drawable.ic_baseline_volume_off_24));
             btnAudio.setTag("R.drawable.ic_baseline_volume_off_24");
         }
@@ -82,6 +82,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
             tvPuntosMinimo.setText(Integer.toString(puntos_minimos));
         }
         //region Asignar variables
+
         puntos = findViewById(R.id.puntos);
         contador = findViewById(R.id.tvContador);
         temporizador = Integer.parseInt(contador.getText().toString())*1000;
@@ -89,7 +90,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         anchuraDeLaPantalla = displayMetrics.widthPixels;
-        int alturaDeLaPantalla = displayMetrics.heightPixels;
         anchuraDelBloque = anchuraDeLaPantalla / numDeBloques;
         //endregion
 
@@ -126,6 +126,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeLeft() {
                     super.onSwipeLeft();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover - 1;
 
@@ -136,6 +137,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeRight() {
                     super.onSwipeRight();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover + 1;
 
@@ -146,6 +148,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeTop() {
                     super.onSwipeTop();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover - numDeBloques;
 
@@ -156,6 +159,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                 void onSwipeBottom() {
                     super.onSwipeBottom();
 
+                    primeraVez = false;
                     gemaAMover = imageView.getId();
                     gemaAReemplazar = gemaAMover + numDeBloques;
 
@@ -188,8 +192,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                         (int) gema.get(x++).getTag() == gemaElegida &&
                         (int) gema.get(x).getTag() == gemaElegida)
                 {
-                    puntuacion = puntuacion + 3;
-                    puntos.setText(String.valueOf(puntuacion));
+                    //Para evitar sumar puntos si se generan tres iguales desde el principio
+                    if (!primeraVez) {
+                        puntuacion = puntuacion + 3;
+                        puntos.setText(String.valueOf(puntuacion));
+                    }
+
                     //3 veces porque son 3 gemas por línea las que queremos
                     gema.get(x).setImageResource(noGema);
                     gema.get(x).setTag(noGema);
@@ -216,8 +224,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
                     (int) gema.get(x + numDeBloques).getTag() == gemaElegida &&
                     (int) gema.get(x + 2 * numDeBloques).getTag() == gemaElegida)
             {
-                puntuacion = puntuacion + 3;
-                puntos.setText(String.valueOf(puntuacion));
+                //Para evitar sumar puntos si se generan tres iguales desde el principio
+                if (!primeraVez) {
+                    puntuacion = puntuacion + 3;
+                    puntos.setText(String.valueOf(puntuacion));
+                }
+
                 //3 veces porque son 3 gemas por columna las que queremos
                 gema.get(x).setImageResource(noGema);
                 gema.get(x).setTag(noGema);
@@ -316,7 +328,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
-
 
     @Override
     public void onClick(View v) {
