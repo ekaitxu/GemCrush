@@ -29,4 +29,7 @@
     <string name="facil">Erraza</string>
     <string name="seleccion_una_dificultad">Zailtasuna aukeratu</string>
     <string name="de">/</string>
+    <string name="vidas">Vidas</string>
+    <string name="vidas_actuales">0</string>
+    <string name="titulo">titulo</string>
 </resources>

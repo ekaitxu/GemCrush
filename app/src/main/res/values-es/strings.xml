@@ -24,9 +24,12 @@
     <string name="contador">60</string>
     <string name="salir">Salir</string>
     <string name="rendirse">Rendirse</string>
-    <string name="dificil">Dificil</string>
+    <string name="dificil">Difícil</string>
     <string name="normal">Normal</string>
-    <string name="facil">Facil</string>
+    <string name="facil">Fácil</string>
     <string name="seleccion_una_dificultad">Seleccioné una dificultad</string>
     <string name="de">/</string>
+    <string name="vidas">Vidas</string>
+    <string name="vidas_actuales">0</string>
+    <string name="titulo">titulo</string>
 </resources>

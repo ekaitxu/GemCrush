@@ -33,23 +33,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/facil"
-            tools:ignore="ButtonStyle" />
+            style="@style/Button"/>
 
         <Button
             android:id="@+id/btn_Normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50sp"
+            android:layout_marginStart="20sp"
             android:text="@string/normal"
-            tools:ignore="ButtonStyle" />
+            style="@style/Button"/>
 
         <Button
             android:id="@+id/btn_Dificil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50sp"
+            android:layout_marginStart="20sp"
             android:text="@string/dificil"
-            tools:ignore="ButtonStyle" />
+            style="@style/Button" />
     </LinearLayout>
 
 

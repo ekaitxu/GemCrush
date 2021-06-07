@@ -28,4 +28,7 @@
     <string name="facil">Facil</string>
     <string name="seleccion_una_dificultad">Seleccioné una dificultad</string>
     <string name="de">/</string>
+    <string name="vidas">Vidas</string>
+    <string name="vidas_actuales">0</string>
+    <string name="titulo">titulo</string>
 </resources>
