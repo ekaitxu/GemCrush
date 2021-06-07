@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:src="@drawable/animacion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
